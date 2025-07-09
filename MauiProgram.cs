@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiTodos2.Helpers;
+using MauiTodos2.Pages;
+using MauiTodos2.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace MauiTodos2
 {
@@ -18,6 +21,10 @@ namespace MauiTodos2
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddPage<AppShell, AppShellViewModel>(null);
+            builder.Services.AddPage<TodosListPage, TodosListViewModel>(RouteNames.TodosList);
+
 
             return builder.Build();
         }
