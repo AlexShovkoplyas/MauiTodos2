@@ -5,21 +5,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiTodos2"
     xmlns:pages="clr-namespace:MauiTodos2.Pages"
-    Title="MauiTodos2">
+    Title="MauiTodos2"
+    Shell.FlyoutBehavior="{OnIdiom Phone=Disabled,
+                                   Default=Flyout}"
+    Shell.TabBarIsVisible="{OnIdiom Phone=True,
+                                    Default=False}">
+    <Shell.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="add.png"
+            Priority="0"
+            Text="Add Todo" />
+    </Shell.ToolbarItems>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <Label HorizontalTextAlignment="Center" Text="My todos app" />
+    </Shell.FlyoutHeader>
 
-    <ShellContent
-        Title="Todos"
-        ContentTemplate="{DataTemplate pages:TodosListPage}"
-        Route="{x:Static local:RouteNames.TodosList}" />
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        <ShellContent
+            Title="Todos"
+            ContentTemplate="{DataTemplate pages:PeopleListPage}"
+            Route="{x:Static local:RouteNames.TodosList}" />
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate pages:SettingsPage}"
+            Route="{x:Static local:RouteNames.Settings}" />
+    </FlyoutItem>
 
-    <ShellContent
-        Title="Settings"
-        ContentTemplate="{DataTemplate pages:SettingsPage}"
-         />
 
 </Shell>

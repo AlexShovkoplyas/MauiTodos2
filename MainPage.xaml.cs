@@ -1,12 +1,15 @@
-﻿namespace MauiTodos2
+﻿using MauiTodos2.ViewModels;
+
+namespace MauiTodos2
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
 
-        public MainPage()
+        public MainPage(MainViewModel viewModel)
         {
             InitializeComponent();
+            BindingContext = viewModel;
         }
 
         private void OnCounterClicked(object? sender, EventArgs e)
